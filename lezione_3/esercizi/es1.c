@@ -77,13 +77,7 @@ int main() {
     // In teoria si potrebbe usare il costrutto switch, ma non lo sopporto
 
     printf("Risultato: %lf \n", risultato);
-}
-
-
-    
-
-
-    
+}    
 
     return 0;
 }
