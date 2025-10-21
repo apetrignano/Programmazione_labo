@@ -52,11 +52,13 @@ int main() {
 
 
     do {
+
         printf("Inserire due numeri reali: \n");
         scanf("%lf", &a);
         scanf("%lf", &b);
-        printf("1: somma \n2: sottrazione \n3: moltiplicazione \n4: divisione\n");
+        printf("1: somma \n2: sottrazione \n3: moltiplicazione \n4: divisione\n altro tasto: spegni il programma");
         scanf("%d", &operazione);
+
     } while (operazione == 4 && b == 0); 
 
     if(operazione == 1) {
@@ -72,7 +74,7 @@ int main() {
         return 0;
     }
 
-
+    // In teoria si potrebbe usare il costrutto switch, ma non lo sopporto
 
     printf("Risultato: %lf \n", risultato);
 }
