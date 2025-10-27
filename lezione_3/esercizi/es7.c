@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// es1.1 ed es1.2 nel file di esercizi
+
 /*dichiara variabile str di tipo array di char e una variabile di tipo char, valori assegnati:
 costante stringa "Pippo" e costante carattere 'z', il programa prima di finire mostra queste due variabili*/
 

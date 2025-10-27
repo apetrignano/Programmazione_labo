@@ -1,5 +1,6 @@
 /*eco con stringhe*/
 
+// es 1.3 ed 1.4 nel file di esercizi
 #include <stdlib.h>
 #include <stdio.h>
 
