@@ -15,7 +15,7 @@ int main() {
     
     for(int i = 0; i < SIZE; i++) {
         sum += numeri[i];
-    }
+    } // questo ciclo si può incorporare nel for precedente
     printf("Media: %lf \n", sum / SIZE);
 
 
