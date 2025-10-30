@@ -15,6 +15,7 @@ int main(int argc, char *argv[]) {
     char string[256];
     char substring[256];
     int flag = 0; // 0 significa no, 1 invece sì
+    int i = 0, j = 0;
 
     printf("Inserire la stringa principale:\n");
     fgets(string, 256, stdin);
@@ -38,15 +39,24 @@ int main(int argc, char *argv[]) {
     
 }*/
 
-    for(int i = 0; i != '\n'; i++) {
-        int j = 0;
-
-        while(string[])
+    while(substring[j] != '\0' && string[i] != '\0') {
+        while(substring[i] != string[j] && substring[i] != '0' && string[j] != '\0') { // scorre, tenendo fissa la substring, fino a trovare i due caratteri coincidenti
+            printf("Confronto tra %c e %c, non sono uguali\n", substring[j], string[i]);
+            j++;
+        }
+        printf("Raggiunto primo carattere uguale: %c \n", substring[i]);
+        while(substring[i] == string[j]) { // confronta per vedere se da quel momento in poi i caratteri coincidono
+            printf("Confronto tra %c e %c, i caratteri coincidono\n", substring[i], string[j]);
+            j++; i++;
+            if(substring[i] == '\0') { // coincidono fino alla fine: vuol dire che sono uguali
+                flag = 1;
+                printf("flag\n");
+            } // se flag == 1 si esce dal ciclo, dato che sicuramente substring[j] == '\0'
+        } if(!flag) i = 0;
     }
 
-    
-        if(flag == 1) printf("Sì\n");
-            else printf("No\n");
+    if(flag) printf("Sì\n");
+    else printf("No\n");
 
     return 0;
 }
