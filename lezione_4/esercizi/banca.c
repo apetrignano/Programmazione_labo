@@ -56,38 +56,6 @@ int main() {
 
 	} while(choice != 5);
 
-	/*switch(choice) {
-		case 1:
-			printf("Saldo corrente: %lf", saldo);
-			break;
-		case 2:
-			double dep;
-
-			printf("Quanto di intende depositare? ");
-			scanf("%lf", &dep);
-			printf("Saldo aggiornato: %lf\n", deposito(saldo, dep));
-			break;
-		case 3:
-			double prel;
-
-			do{
-			
-			printf("Inserire denaro da prelevare: ");
-			scanf("%lf", &prel);
-			} while (prel <= 0 || prel > saldo);
-
-			printf("Saldo aggiornato: %lf", prelievo(saldo, prel));
-			
-		case 4:
-			double time;
-
-			printf("Anni di deposito: ");
-			scanf("%lf", &time);
-
-			printf("Tasso annuo: %lf\nSaldo previsto: %lf\n", tasso, saldo + tass(saldo, time, tasso));
-	
-	} */
-
 
 return 0;
 }
