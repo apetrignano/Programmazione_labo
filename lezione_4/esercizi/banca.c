@@ -9,7 +9,7 @@ int main() {
 
 	int choice;
 	double saldo = 300;
-	double tasso = 3;
+	double tasso = 0.03;
 
 	do{
 
@@ -19,18 +19,20 @@ int main() {
 	} while(choice < 1 || choice > 5); 
 
 	switch(choice) {
-		case 1:
+		case 1: {
 			printf("Saldo corrente: %lf\n", saldo);
 			break;
-		case 2:
+      }
+		case 2: {
 			double dep;
 
 			printf("Quanto di intende depositare? ");
 			scanf("%lf", &dep);
 			saldo = deposito(saldo, dep);
 			printf("Saldo aggiornato: %lf\n", saldo);
+      }
 			break;
-		case 3:
+		case 3: {
 			double prel;
 
 			do{
@@ -40,16 +42,18 @@ int main() {
 			} while (prel <= 0 || prel > saldo);
 
 			printf("Saldo aggiornato: %lf\n", prelievo(saldo, prel));
-			break;
+      }
+      break;
 			
-		case 4:
-			double time;
+		case 4: {
+      double time;
 
 			printf("Anni di deposito: ");
 			scanf("%lf", &time);
 
 			printf("Tasso annuo: %lf\nSaldo previsto: %lf\n", tasso, saldo + tass(saldo, time, tasso));
-	
+      }
+      break;
 	}
 
 
