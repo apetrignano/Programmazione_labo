@@ -9,7 +9,7 @@ int main(){
   int matrix[M][N]= {
     {1, 1, 0},
     {0, 1, 0},
-    {1, 0, 1}
+    {0, 0, 1}
   };
   int i, j;
   int sum = 0;
