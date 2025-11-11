@@ -1,0 +1,18 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int main() {
+
+	int a = 0, b = 1, c, *px = &a, *py = &b, *tmp = &c;
+
+	*tmp = *px;
+	*px = *py;
+	*py = *tmp;
+
+	printf("*px = %d\n*py = %d\n", *px, *py);
+
+
+
+
+	return 0;
+}
