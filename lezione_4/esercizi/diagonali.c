@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Per ora ho calcolato solo il massimo, andrebbe aggiunto il minimo
+
 #define M 3
 #define N 3
 int main(int argc, char *argv[]){

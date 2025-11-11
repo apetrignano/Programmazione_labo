@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// Inserire una funzione check_operandi, che controlla se gli operandi sono effettivamente stati inseriti
+
 int main() {
 
     double somma();
@@ -15,7 +17,7 @@ int main() {
     do {
     do{
         printf("1.\tAddizione.\n2.\tSotttrazione.\n3.\tMoltiplicazione.\n4.\tDivisione.\n5.\tEsci.\n> ");
-        scanf("%d", &select);
+        scanf("%d", &select); // ovviamente non andrebbe usata la scanf per il char, ma la getchar(), con i difetti che ne conseguono obv
     } while(select < 1 || select > 5);
 
  /*   if(select == 5) {
@@ -78,7 +80,6 @@ double sottrazione() {
 }
 
 double sottrazione(double a, double b) {
-	return a - b;
 
 	return a - b;
 }
