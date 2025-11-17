@@ -21,16 +21,22 @@ int main(int argc, char *argv[]) {
 
 int palindroma(char *s) { // non bisogna allocare nuova memoria per una copia di s da confrontare
 	
-	int len = sizeof(s) - 1; // si toglie 1 perchè ultimo carattere è il terminatore
-	int i = 0, j = len, result = 1;
-	
+	int len = 0; 
+  while(s[len] != '\n') {
+    len++;
+  }
+  //
+  printf("lunghezza della stringa: %d\n", len);
+	int i = 0, j = len - 1, result = 1;
+
 	do {
+    printf("confronto tra s[%d] = %c e s[%d] = %c\n", i, s[i], j, s[j]);
 		if(s[i] != s[j]) {
 					result = 0;
 				return result;
 		}
 		i++;j--;
-	} while(i <= len /*/ 2*/);
+	} while(i < len / 2 + 1);
 
 	return result;
 }
