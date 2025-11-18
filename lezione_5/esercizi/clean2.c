@@ -10,24 +10,36 @@ int main(int argc, char *argv[]) {
   //char c3[BUFSIZ]; // u, occorrenze da togliere
   //
   //
-  char c3[] = "cfg";
+  char c3[] = "a";
 
   printf("Inserire la stringa:\n");
   fgets(c1, BUFSIZ, stdin);
   //getchar();
 
-  /*printf("inserire parametri da eliminare:\n");
-  fgets(c3, BUFSIZ, stdin);*/
-
-  /*int i = 0;
+  int i = 0;
+  /*
   while(c3[i] != '\0') {
-  printf("eliminare: %d\n", c3[i]);
+  printf("eliminare: %c\n", c3[i]);
   i++;
   }*/
-
+while(i < 5) {
+    printf("carattere ASCII di t[%d] = %d\n", i, c2[i]);
+    i++;
+  }
+  i = 0;
   clean(c1, c2, c3);
+  /*
+  printf("%c\n", c2[0]);
+  printf("%c\n", c2[1]);
+  printf("%c\n", c2[2]);
+  printf("%c\n", c2[3]);
+  */
 
-  printf("Risultato:\n%s", c2);
+  printf("Risultato:\n%s\n", c2);
+  /*while(i < 5) {
+    printf("carattere ASCII di t[%d] = %d\n", i, c2[i]);
+    i++;
+  }*/
   
   return EXIT_SUCCESS;
 }
@@ -35,52 +47,28 @@ int main(int argc, char *argv[]) {
 void clean(char *s, char *t, char *u) {
 
   int i = 0, j = 0, counter = 0;
-   /*while(u[counter] != '\0') { // non va bene controllare un solo carattere alla volta
-    printf("controllo della presenza di %c\n", u[counter]);
-      while(s[i]) {
-        if(s[i] != u[counter]) { // inserisci in t solo se valore è diverso dal check
-         t[j] = s[i];
-         printf("%c va bene\n", s[i]);
-         j++;
-        //problema: per ora il check successivo viene fatto su s, non sulla stringa modificata
-        }
-        i++;
-      }
-    i = 0; j = 0;
-    counter++;
-    }*/ 
-  /*while(s[i]) { // for s[i] in s[]]
-    printf("inizio controllo\n");
-    while(u[counter]) { // for u[counter] in u[]
-      printf("controllo tra %c e %c\n", s[i], u[counter]);
-      if(s[i] != u[counter]) {
-        t[j] = s[i];
-	j++;
-        counter++;
-      }
-      //counter ++;
-      //j++;
-      //i++;
-    }
-    //j++;
-    i++;
-    counter = 0;
-  }*/
 
-  while(s[i]) {
-	  printf("inizio controllo\n");
+  while(s[i]!= '\n') {
+	  printf("carattere %c\n", s[i]);
 	  while(u[counter]) {
-		  printf("confronto tra %c e %c\n", s[i], u[counter]);
-		  if(s[i] != u[counter]) {
+		  //printf("confronto tra %c e %c\n", s[i], u[counter]);
+      if(s[i] != u[counter]) {
 			  t[j] = s[i];
+        printf("inserimento del carattere %c (ASCII %d) in c2[%d]\n", t[j], t[j], j);
 			  counter++;
-		  } 
-		  i++;
+		  } else {
+        counter = 0;
+		    i++;
+      }
 		  //counter = 0;
 		  //j++;
 	  }
-	  counter = 0;
+    printf("contenuto di t[%d]: %c\n", j, t[j]);
+    counter = 0;
+    i++;
 	  j++;
   }
+  t[j] = 0;
+  // "problema": devo aggiungere manualmente il terminatore alla fine dei vari cicli
 
 }
