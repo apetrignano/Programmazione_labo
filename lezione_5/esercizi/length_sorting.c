@@ -37,4 +37,19 @@ void length_sorting(char **s, int len) { // char **s chiaramente è strings,il q
     } 
   }
 
+ /*while(scambio == TRUE) {
+        scambio = FALSE;
+        for(int i = 0; i <= N - 2; i++) {
+            if(v[i] > v[i+1]){
+            tmp = v[i];
+            v[i] = v[i+1];
+            v[i+1] = tmp;
+            scambio = TRUE;
+            counter ++;
+            }
+            
+        }
+    }*/
+
+
 }
