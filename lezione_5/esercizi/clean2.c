@@ -49,17 +49,38 @@ void clean(char *s, char *t, char *u) {
     i = 0; j = 0;
     counter++;
     }*/ 
-  while(s[i]) {
+  /*while(s[i]) { // for s[i] in s[]]
     printf("inizio controllo\n");
-    while(u[counter]) {
-      while(s[i] != u[counter]) {
-        printf("controllo tra %c e %c\n", s[i], u[counter]);
+    while(u[counter]) { // for u[counter] in u[]
+      printf("controllo tra %c e %c\n", s[i], u[counter]);
+      if(s[i] != u[counter]) {
         t[j] = s[i];
+	j++;
         counter++;
       }
-      j++;
+      //counter ++;
+      //j++;
+      //i++;
     }
+    //j++;
     i++;
     counter = 0;
+  }*/
+
+  while(s[i]) {
+	  printf("inizio controllo\n");
+	  while(u[counter]) {
+		  printf("confronto tra %c e %c\n", s[i], u[counter]);
+		  if(s[i] != u[counter]) {
+			  t[j] = s[i];
+			  counter++;
+		  } 
+		  i++;
+		  //counter = 0;
+		  //j++;
+	  }
+	  counter = 0;
+	  j++;
   }
+
 }
