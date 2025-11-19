@@ -31,32 +31,23 @@ int main(int argc, char *argv[]) {
   length_BubSort(puntatori_stringhe, len);
   printf("Ordinamento stringhe:\n");
 
-  for(int i = 0; i < NUM_STRINGS; i++) {
+  for(int i = 0; i < len; i++) {
     printf("Stringa %d: %s\n", i + 1, strings[i]);
   }
 
   return EXIT_SUCCESS;
 }
 
-/*void length_sorting(char **s, int len) { // char **s chiaramente è strings,il quale è un puntatore ad array di puntatori
-  //
-  for(int i = 0; i < len; i++) {
-   for(int j = i + 1; j < len; j++) {
-      if(strlen(s[i]) > strlen(s[j])) {
-        swap(s[i], s[j]);
-      }
-
-    } 
-  }
-
-}*/
 
 void length_BubSort(char **s, int len) {
   bool scambio = TRUE;
   while(scambio == TRUE) {
     scambio = FALSE;
     for(int i = 0; i <= len - 2; i++) {
-      if(strcmp(s[i], s[i+1]) > 0) { // se s[i] è più lungo della stringa successiva si scambiano
+      //printf("confronto tra:\n%s (s[%d])\n%s(s[%d])\n", s[i], i, s[i+1], i + 1);
+      //printf("%d\n", strcmp(s[i], s[i+1]));
+      if(strlen(s[i]) > strlen(s[i+1])) { // se s[i] è più lungo della stringa successiva si scambiano
+        //printf("confronto tra\n%s\n%s\nLa prima stringa è più lunga, pertanto si scambia\n", s[i], s[i+1]);
         swap(s[i], s[i+1]);
         scambio = TRUE;
       }
