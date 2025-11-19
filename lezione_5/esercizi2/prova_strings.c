@@ -43,7 +43,7 @@ int main() {
 void bubble_sort(char **s, int len, bool scambio) {
   while(scambio == TRUE) {
     scambio = FALSE;
-    for(int i = 0; i < len - 2; i++) {
+    for(int i = 0; i < len - 1; i++) {
       if(strcmp(s[i], s[i+1]) > 0) { // se s[i] è più lungo della stringa successiva si scambiano
         swap(s[i], s[i+1]);
         scambio = TRUE;
@@ -53,7 +53,8 @@ void bubble_sort(char **s, int len, bool scambio) {
 }
 
 void swap(char *a, char *b) {
-  char *tmp = a;
-  a = b;
-  b = tmp;
+  char tmp[BUFSIZ];
+  strcpy(tmp, a); // copia del contenuto di s1 in tmp
+  strcpy(a, b);
+  strcpy(b, tmp);
 }

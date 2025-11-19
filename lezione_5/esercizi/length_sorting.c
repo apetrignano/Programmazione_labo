@@ -44,10 +44,8 @@ void length_BubSort(char **s, int len) {
   while(scambio == TRUE) {
     scambio = FALSE;
     for(int i = 0; i <= len - 2; i++) {
-      //printf("confronto tra:\n%s (s[%d])\n%s(s[%d])\n", s[i], i, s[i+1], i + 1);
-      //printf("%d\n", strcmp(s[i], s[i+1]));
       if(strlen(s[i]) > strlen(s[i+1])) { // se s[i] è più lungo della stringa successiva si scambiano
-        //printf("confronto tra\n%s\n%s\nLa prima stringa è più lunga, pertanto si scambia\n", s[i], s[i+1]);
+        printf("confronto tra\n%s\n%s\nLa prima stringa è più lunga, pertanto si scambia\n", s[i], s[i+1]);
         swap(s[i], s[i+1]);
         scambio = TRUE;
       }
