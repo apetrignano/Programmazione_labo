@@ -1,5 +1,5 @@
-prova_strings: prova_strings.c
-	gcc -o prova_strings prova_strings.c 
+prova_strings: Bubblesort.c
+	gcc -o prova Bubblesort.c 
 
 clean:
-	rm -f prova_strings
+	rm -f prova

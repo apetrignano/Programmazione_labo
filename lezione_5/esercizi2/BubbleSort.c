@@ -6,6 +6,7 @@ typedef enum {FALSE, TRUE} bool;
 
 void bubble_sort(double*, int);
 void swap(double*, double*);
+void swapPointers(double *a, double *b);
 
 int main() {
 
@@ -22,8 +23,11 @@ int main() {
 		scanf("%lf", &numeri[i]);
 		}
 
+  //printf("%lf - %lf\n", numeri[0], numeri[1]);
 
   bubble_sort(numeri, n);
+  //swapPointers(&numeri[0], &numeri[1]);
+  //printf("%lf - %lf\n", numeri[0], numeri[1]);
 
   for(int i = 0; i < n; i++) {
     printf("elemento %d: %lf\n", i + 1, numeri[i]);
@@ -40,18 +44,27 @@ void bubble_sort(double *v, int len) {
   while(scambio == TRUE) {
         scambio = FALSE;
         for(int i = 0; i <= len - 2; i++) {
-            printf("confronto tra %lf e %lf\n", v[i], v[i + 1]);
+            //printf("confronto tra %lf e %lf\n", v[i], v[i + 1]);
             if(v[i] > v[i+1]){
             swap(&v[i], &v[i+1]);
+            //swapPointers(&v[i], &v[i+1]);
             scambio = TRUE;
             }
         }
     }
 }
 
-void swap(double *a, double *b) {
-    double* tmp = a;
-    tmp = a;
-    a = b;
-    b = tmp;
+void swap(double *a, double *b) { // sinceramente devo capire questo, pensavo si dovesse lavorare sugli indirizzi // sinceramente devo capire questo, pensavo si dovesse lavorare sugli indirizzi
+    double tmp = *a;
+    *a = *b;
+    *b = tmp;
   }
+
+void swapPointers(double *a, double *b) {
+  double *tmp = a;
+  //printf("tmp = %lf\na = %lf\n", *tmp, *a);
+  a = b;
+  //printf("a = %lf\nb = %lf\n", *a, *b);
+  b = tmp;
+  //printf("b = %lf\ntmp = %lf\n", *b, *tmp);
+}
