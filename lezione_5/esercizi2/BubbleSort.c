@@ -60,11 +60,11 @@ void swap(double *a, double *b) { // sinceramente devo capire questo, pensavo si
     *b = tmp;
   }
 
-void swapPointers(double *a, double *b) {
-  double *tmp = a;
+void swapPointers(double *a, double *b) { // a e b contengono degli indirizzi
+  double *tmp = a; // dichiarazione di un puntatore di tipo double, il cui valore è l'indirizzo del valore puntato da a
   //printf("tmp = %lf\na = %lf\n", *tmp, *a);
-  a = b;
+  a = b; // assegnamento del valore di b ad a; il valore di b è l'indirizzo del valore puntato da b, a ora punta *b
   //printf("a = %lf\nb = %lf\n", *a, *b);
-  b = tmp;
+  b = tmp; // assegnamento di tmp a b; il valore di tmp è l'indirizzo del valore puntato da a, b ora punta a *tmp
   //printf("b = %lf\ntmp = %lf\n", *b, *tmp);
 }
