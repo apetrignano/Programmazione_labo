@@ -65,6 +65,6 @@ void swapPointers(double *a, double *b) { // a e b contengono degli indirizzi
   //printf("tmp = %lf\na = %lf\n", *tmp, *a);
   a = b; // assegnamento del valore di b ad a; il valore di b è l'indirizzo del valore puntato da b, a ora punta *b
   //printf("a = %lf\nb = %lf\n", *a, *b);
-  b = tmp; // assegnamento di tmp a b; il valore di tmp è l'indirizzo del valore puntato da a, b ora punta a *tmp
+  b = tmp; // assegnamento di tmp a b; il valore di tmp è l'indirizzo del valore puntato da a,
   //printf("b = %lf\ntmp = %lf\n", *b, *tmp);
 }

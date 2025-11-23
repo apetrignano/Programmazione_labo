@@ -1,5 +1,7 @@
-prova_strings: Bubblesort.c
-	gcc -o prova Bubblesort.c 
+prova_strings: Bubblesort3.c
+	gcc -o prova Bubblesort3.c 
 
-clean:
+execute:
+	./prova
+remove:
 	rm -f prova
