@@ -11,53 +11,38 @@ typedef struct  {
 	Node *head;
 	int size;
 } Lista;
-/*
-Lista *crealista() { // implementazione di funzione dichiarata in fase di implementazione
-	Lista *list = (Lista*)malloc(sizeof(Lista));
-	list->head = NULL;
-	list->size = 0;;
-	
-	return list;
-}
-*/
 
 // Dichiarazione funzioni
 Lista *crealista();
 int InserisciInTesta(Lista*, int);
 int InserisciInCoda(Lista*, int);
 int Rimuovi_index(Lista*, int);
-int GetN(Lista*, int);
+int GetN(Lista*, int); // restituisce il valore dell'indice in parametro
 int Rimuovi_testa(Lista*);
 int Rimuovi_coda(Lista*);
 void stampa_lista(Lista *);
 void cancella(Lista*);
 
-int main() {
+// Dichiarazione funzioni nuove
+void salva(Lista*, char*); // scrive i valori della vista nel file, uno per volta
+void carica(char*); // legge un numero non noto a priori di interi, e li salva in una lista concatenata
 
-	Lista *lis = crealista();
 
-	int dimnuova_testa = InserisciInTesta(lis, 3);
-  int ancora1 = InserisciInCoda(lis, 2);
-  int ancora2 = InserisciInCoda(lis, 1);
+int main(int argc, char *argv[]) {
 
-  printf("======================================================\n");
-	printf("Inserimento di elemento in testa\nValore: %d\n", dimnuova_testa);
-  printf("======================================================\n");
-  printf("Contenuto della lista:\n");
-  stampa_lista(lis);
-  printf("======================================================\n");
-  //printf("Contenuto della lista dopo rimozione del primo elemento:\n");
-  //int rimozione = Rimuovi_testa(lis);
-  //stampa_lista(lis);
-  //printf("======================================================\n");
-  printf("Contenuto della lista dopo rimozione dell'ultimo elemento:\n");
-  int rimozione = Rimuovi_coda(lis);
-  stampa_lista(lis);
-  printf("======================================================\n");
-  printf("Rimozione di tutti gli elementi...\n");
-  cancella(lis);
-  //printf("contenuto finale:\n");
-  //stampa_lista(lis);
+  if(argc != 2) {
+    //printf("Usage: ./prog <output>\n");
+    printf("Usage: :/prog <input>\n");
+    return 0;
+  }
+
+	/*Lista *lis = crealista();
+  int add = InserisciInCoda(lis, 1);
+  add = InserisciInCoda(lis, 2);
+  add = InserisciInCoda(lis, 3);
+
+  salva(lis, argv[1]);*/
+  carica(argv[1]);
 
 
 	return 0;
@@ -194,4 +179,46 @@ void cancella(Lista *list) {
   while(list->size > 0) {
     int temp = Rimuovi_coda(list);
   }
+}
+
+void salva(Lista *list, char *output) {
+
+  FILE *f_w;
+  f_w = fopen(output, "w"); // apri il file passato come parametro
+  if(f_w == NULL) {
+    fprintf(stderr, "Open error!\n");
+    exit(33);
+  }
+
+  for(int i = 0; i < list->size; i++) {
+    fprintf(f_w, "elemento %d: %d\n", i + 1, GetN(list, i));
+  }
+  if(fclose(f_w) != 0) {
+    fprintf(stderr, "close error\n");
+    exit(34);;
+  }
+}
+
+void carica(char *input) {
+  FILE *f_r = fopen(input, "r"); // apri il file passato come parametro)
+  int num;
+  if(f_r == NULL) {
+    fprintf(stderr, "Open error!\n");
+    exit(34);
+  }
+
+  Lista *lis = crealista();
+
+  while(!feof(f_r)) {
+    fscanf(f_r, "%d", &num);
+    InserisciInTesta(lis, num);
+    printf("%d\n", num);
+  }
+  if(fclose(f_r) != 0) {
+    fprintf(stderr, "close error!\n");
+    exit(35);
+  }
+
+  stampa_lista(lis);
+
 }
