@@ -7,7 +7,7 @@ int main() {
 
 	char s[] = "ciao";
 
-	//printf("%d\n", s + 1);
+	//printf("%c\n", s + 1); // in questo caso non decade ancora a puntatore
 
 	printf("lunghezza stringa: %d\n", lung(s));
 

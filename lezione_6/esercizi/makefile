@@ -1,4 +1,4 @@
-prog: lungh_stringa.c
-	gcc -o prog lungh_stringa.c
+prog: funz_base.c
+	gcc -o prog funz_base.c
 execute:
 	./prog
