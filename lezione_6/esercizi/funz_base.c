@@ -22,7 +22,11 @@ Lista *crealista() { // implementazione di funzione dichiarata in fase di implem
 */
 
 // Dichiarazione funzioni
-Lista *crealista();
+Lista *crealista(); // IMPORTANTISSIMO! serve tantissiom questa cosa
+		    // se si fa Node *newnode;
+		    // newnode->val = 10;
+		    // newnode->next->NULL;
+		    // si ha dichiarato ad un puntatore, però il problema sta che non sa bene a cosa si sta accedendo
 int InserisciInTesta(Lista*, int);
 int InserisciInCoda(Lista*, int);
 int Rimuovi_index(Lista*, int);
@@ -195,3 +199,12 @@ void cancella(Lista *list) {
     int temp = Rimuovi_coda(list);
   }
 }
+
+
+/*void AddElement(*list, val) {
+	Node newnode;
+	newnode.val = val;
+	newnode.next = NULL;
+	List->head = &newnode; // Non funziona perchè è una variabile locale
+	//...
+}*/
