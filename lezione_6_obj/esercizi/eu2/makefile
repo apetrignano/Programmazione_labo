@@ -1,4 +1,5 @@
-compila:
+compila: 
 	javac Euclide.java
-execute:
+esegui:
 	java Euclide
+
