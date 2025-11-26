@@ -25,25 +25,19 @@ void cancella(Lista*);
 
 // Dichiarazione funzioni nuove
 void salva(Lista*, char*); // scrive i valori della vista nel file, uno per volta
-void carica(char*); // legge un numero non noto a priori di interi, e li salva in una lista concatenata
+void carica(char*); // legge da file un numero non noto a priori di interi, e li salva in una lista concatenata
+int rimuovi(Lista*, int); // cancella una sola occorrenza di un valore passato come parametro
 
 
 int main(int argc, char *argv[]) {
 
   if(argc != 2) {
     //printf("Usage: ./prog <output>\n");
-    printf("Usage: :/prog <input>\n");
-    return 0;
+    printf("Usage: :/.%s <input>\n", argv[0]);
+    return -1;
   }
 
-	/*Lista *lis = crealista();
-  int add = InserisciInCoda(lis, 1);
-  add = InserisciInCoda(lis, 2);
-  add = InserisciInCoda(lis, 3);
-
-  salva(lis, argv[1]);*/
   carica(argv[1]);
-
 
 	return 0;
 }
@@ -63,11 +57,14 @@ Lista *crealista() { // implementazione di funzione dichiarata in fase di implem
 }
 int InserisciInTesta(Lista *list, int a) {
 
+  // manca un metodo per gestire il caso in cui non ci siano elementi da inserire
+
 	Node *newnode = (Node *) malloc(sizeof(Node)); // dichiarazione di nuovo nodo di tipo nodo
 	if(newnode == NULL) {
     fprintf(stderr, "Allocazione fallita\n");
-    exit(10);
+    return -1;
   }
+
   newnode->data = a;
 	newnode->next = list->head; //punta al primo elemento della lista
 	list->head = newnode; // Ora newnode è il primo elemento della lista
@@ -209,16 +206,39 @@ void carica(char *input) {
 
   Lista *lis = crealista();
 
-  while(!feof(f_r)) {
-    fscanf(f_r, "%d", &num);
-    InserisciInTesta(lis, num);
-    printf("%d\n", num);
+  while(fscanf(f_r, "%d", &num) == 1) { // la lettura si fa direttamente qua, altrimenti l'ultimo valore viene ripetuto
+    InserisciInTesta(lis, num); // inserisce il numero appena letto in testa alla lista
   }
+
   if(fclose(f_r) != 0) {
     fprintf(stderr, "close error!\n");
     exit(35);
   }
 
   stampa_lista(lis);
+  //int n = rimuovi(lis, 36);
+  //stampa_lista(lis);
 
+}
+
+
+
+int rimuovi(Lista *lis, int n) {
+
+  Node *seeknode = lis->head;
+  printf("primo valore della lista: %d\n", seeknode->data);
+  Node *prec = NULL;
+
+  while(seeknode->data != n && seeknode->next != NULL) {
+
+    if(seeknode->next == NULL) return -1;
+    prec = seeknode;
+    seeknode = seeknode->next;
+  }
+  if(seeknode->next == NULL) return -1;
+  prec->next = seeknode->next;
+  free(seeknode);
+  lis->size--;
+
+  return n;
 }
