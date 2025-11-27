@@ -1,4 +1,4 @@
 prog: funz_base.c
-	gcc -o prog catalan.c
+	gcc -o prog delannoy.c
 esegui:
-	./prog 3
+	./prog 2 2

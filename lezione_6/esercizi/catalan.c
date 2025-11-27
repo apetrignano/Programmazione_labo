@@ -12,7 +12,9 @@ int main(int argc, char *argv[]) {
 
   int n = atoi(argv[1]);
 
-  printf("C(%d) = %d\n", n, catalan(n));
+  for(int i = 0; i <= n; i++) {
+    printf("C(%d) = %d\n", i, catalan(i));
+  }
 
   return 0;
 }
