@@ -16,7 +16,7 @@ int main() {
 
 int lung(char *s) {
 	if(s[0] == 0) {
-		return 0; //err? 
+		return 0; 
 	}
 
 	printf("passo ricorsivo\n");

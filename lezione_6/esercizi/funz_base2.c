@@ -25,8 +25,11 @@ void cancella(Lista*);
 
 // Dichiarazione funzioni nuove
 void salva(Lista*, char*); // scrive i valori della vista nel file, uno per volta
-void carica(char*); // legge da file un numero non noto a priori di interi, e li salva in una lista concatenata
+Lista *carica(char*); // legge da file un numero non noto a priori di interi, e li salva in una lista concatenata
 int rimuovi(Lista*, int); // cancella una sola occorrenza di un valore passato come parametro
+int stampaRicorsiva(Node*); // stampa a schermo gli elementi della lista in ordine inverso
+void stampa_recursive(Lista *lis); // semplicemente stampa un valore int
+
 
 
 int main(int argc, char *argv[]) {
@@ -37,7 +40,12 @@ int main(int argc, char *argv[]) {
     return -1;
   }
 
-  carica(argv[1]);
+  Lista *newlist = carica(argv[1]);
+  
+  printf("Stampa degli elementi in modo ricorsivo:\n");
+  while(newlist->head != NULL) { // Problema: in questo modo per ora l'ultimo elemento non viene stampato, dato che l'ultimo elemento punta per forza a NULL
+    stampa_recursive(newlist);
+  }
 
 	return 0;
 }
@@ -196,7 +204,7 @@ void salva(Lista *list, char *output) {
   }
 }
 
-void carica(char *input) {
+Lista *carica(char *input) {
   FILE *f_r = fopen(input, "r"); // apri il file passato come parametro)
   int num;
   if(f_r == NULL) {
@@ -218,6 +226,7 @@ void carica(char *input) {
   stampa_lista(lis);
   //int n = rimuovi(lis, 36);
   //stampa_lista(lis);
+  return lis;
 
 }
 
@@ -241,4 +250,22 @@ int rimuovi(Lista *lis, int n) {
   lis->size--;
 
   return n;
+}
+
+
+int stampaRicorsiva(Node *node) {
+  if(node->next == NULL) {
+    //printf("Raggiunto caso base\n");
+    return node->data;
+  } else {
+    //printf("non raggiunto caso base, si va avanti con il passo iterativo\n");
+    return stampaRicorsiva(node->next);
+  }
+}
+
+void stampa_recursive(Lista *lis) {
+
+  printf("%d\n", stampaRicorsiva(lis->head));
+  Rimuovi_coda(lis);
+
 }
