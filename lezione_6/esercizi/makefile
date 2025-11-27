@@ -1,4 +1,4 @@
 prog: funz_base.c
-	gcc -o prog occorrenze.c
+	gcc -o prog catalan.c
 esegui:
-	./prog
+	./prog 3
