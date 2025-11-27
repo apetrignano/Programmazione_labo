@@ -165,7 +165,7 @@ int GetN(Lista *list, int index) {
 }
 
 void stampa_lista(Lista *list) {
-  printf("Elenco elementi della lista:\n");
+
   for(int i = 0; i < list->size; i++) {
     printf("elemento %d: %d\n", i + 1, GetN(list, i));
   }
@@ -226,7 +226,7 @@ void carica(char *input) {
 int rimuovi(Lista *lis, int n) {
 
   Node *seeknode = lis->head;
-  printf("primo valore della lista: %d\n", seeknode->data);
+  //printf("primo valore della lista: %d\n", seeknode->data);
   Node *prec = NULL;
 
   while(seeknode->data != n && seeknode->next != NULL) {
