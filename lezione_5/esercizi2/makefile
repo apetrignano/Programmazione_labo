@@ -1,5 +1,5 @@
-prova_strings: Bubblesort3.c
-	gcc -o prova Bubblesort3.c 
+prova_strings: unite.c
+	gcc -o prova unite.c
 
 execute:
 	./prova
