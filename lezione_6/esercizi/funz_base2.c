@@ -29,8 +29,7 @@ Lista *carica(char*); // legge da file un numero non noto a priori di interi, e 
 int rimuovi(Lista*, int); // cancella una sola occorrenza di un valore passato come parametro
 int stampaRicorsiva(Node*); // stampa a schermo gli elementi della lista in ordine inverso
 void stampa_recursive(Lista *lis); // semplicemente stampa un valore int
-
-
+void stampaRicorsivaEff(Node *node); // stampa ricordiva ma più efficiente, non da segmentation fault
 
 int main(int argc, char *argv[]) {
 
@@ -43,9 +42,10 @@ int main(int argc, char *argv[]) {
   Lista *newlist = carica(argv[1]);
   
   printf("Stampa degli elementi in modo ricorsivo:\n");
-  while(newlist->head != NULL) { // Problema: in questo modo per ora l'ultimo elemento non viene stampato, dato che l'ultimo elemento punta per forza a NULL
+  /*while(newlist->head != NULL) {
     stampa_recursive(newlist);
-  }
+  }*/
+  stampaRicorsivaEff(newlist->head);
 
 	return 0;
 }
@@ -268,4 +268,9 @@ void stampa_recursive(Lista *lis) {
   printf("%d\n", stampaRicorsiva(lis->head));
   Rimuovi_coda(lis);
 
+}
+void stampaRicorsivaEff(Node *node) {
+  if(node == NULL) return;
+  stampaRicorsivaEff(node->next);
+  printf("%d\n", node->data);
 }
