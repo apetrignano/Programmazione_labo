@@ -5,26 +5,32 @@
 #define M 5
 #define N 5 
 
+typedef struct {
+  int h;
+  int w;
+  int **mat; // puntatore ad array di puntatori, la dimensione per ora non è nota, in quanto non sono stati inizializzati h e w, darebbe undefined behaviour
+  int i;
+  int j;
+
+} Pattern;
+
+// funzioni prima parte
 void stampa(int [M][N]);
 void inizializza(int [M][N]);
 int vicini(int[M][N], int, int); // contatore di celle vicine vive
 void nuovaGenerazione(int[M][N]); // modifica la matrice secondo certi criteri
 void inizializza(int[M][N]); // si "genera" una griglia in modo randomico
 
+// funzioni seconda parte
+void inserisciPattern(int[M][N], Pattern);
+//void caricaPatterns(char **, Pattern);
+
 int main() {
 
-	/*int status[M][N] = {    
-				{0, 0, 0, 0, 0},
-				{0, 0, 1, 0, 0},
-				{0, 1, 1, 0, 0},
-        {0, 1, 0, 1, 0},
-        {0, 0, 0, 0, 0}
-	};*/
-	
   int status[M][N];
-
   inizializza(status);
 
+  printf("PRIMA PARTE\n");
   printf("==============\n");
 	stampa(status);
 
@@ -40,6 +46,8 @@ int main() {
     sleep (1);
   }*/
 
+  printf("SECONDA PARTE\n");
+  
 	return 0;
 
 }
@@ -62,11 +70,11 @@ int vicini(int stato[M][N], int riga, int colonna) {
 
 	int counter = 0;
 
-	for(int i = riga - 1; i <= riga + 1; i++) { // problema: deve entrare nel loop anche se le due condizioni ultime non sono rispettare, però non deve contare ciò che viene letto
+	for(int i = riga - 1; i <= riga + 1; i++) {
 		//printf("riga %d\n", i);
 		for(int j = colonna - 1; j <= colonna + 1; j++) {
 			//printf("cella a[%d][%d] = %d\n", i, j, stato[i][j]);
-			if(stato[i][j] == 1 && (i >= 0 /*&& i <= riga + 1*/ && i < M) && (j >= 0 /*&& j <= colonna + 1*/ && j < N)) {
+			if(stato[i][j] == 1 && (i >= 0 && i < M) && (j >= 0 && j < N)) {
 				counter++;
 				//printf("cella viva in posizione a[%d][%d]\n", i, j);
 			}
@@ -113,6 +121,15 @@ void inizializza(int stato[M][N]) {
       if(stato[i][j] % 2 == 0) {
         stato[i][j] = 1;
       } else stato[i][j] = 0;
+    }
+  }
+}
+
+void inserisciPattern(int griglia[M][N], Pattern enter) {
+
+  for(int i =  enter.i; i < enter.h; i++) {
+    for(int j = enter.j; j < enter.w; j++) {
+      griglia[i][j] = enter.mat[i - enter.i][j - enter.j];
     }
   }
 }
