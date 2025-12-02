@@ -23,7 +23,7 @@ void inizializza(int[M][N]); // si "genera" una griglia in modo randomico
 
 // funzioni seconda parte
 void inserisciPattern(int[M][N], Pattern);
-void caricaPatterns(char *, Pattern*); // primo parametro: array di char, una stringa; secondo parametro: array di Pattern, quindi una moltitudine di patterns da caricare
+int caricaPatterns(char *, Pattern*); // primo parametro: array di char, una stringa; secondo parametro: array di Pattern, quindi una moltitudine di patterns da caricare
 
 int main() {
 
@@ -47,6 +47,8 @@ int main() {
   }*/
 
   printf("SECONDA PARTE\n");
+
+  Pattern *insieme_patterns;
   
 	return 0;
 
@@ -137,7 +139,7 @@ void inserisciPattern(int griglia[M][N], Pattern enter) {
 
 
 
-void caricaPatterns(char *input, Pattern *insieme_patterns) {
+int caricaPatterns(char *input, Pattern *insieme) { // puntatore perchè è un insieme di Patterns, non uno singolo
 
   FILE *f_r = fopen(input, "r"); // apri il file passato come parametro
   
@@ -146,12 +148,28 @@ void caricaPatterns(char *input, Pattern *insieme_patterns) {
     exit(34);
   }
 
-  while(f_r) {
-    scanf("%d %d", insieme_patterns)
+  int num_pattern;
+  fscanf(f_r, "%d", &num_pattern); // il primo dato del file è sicuramente il numero di patterns; si assume che il file stesso sia formattato correttamente, quindi niente controllo dell'effettivo numero di patterns
 
+  insieme = (Pattern*) malloc(num_pattern * sizeof(Pattern)); // si è creato un vettore allocato dinamicamente dell'esatta dimensione
+
+  for(int i = 0; i < num_pattern; i++) { // bisogna inserire un ciclo che legga gli elementi della matrice
+    fscanf(f_r, "%d %d", &insieme[i].h, &insieme[i].w); // legge i due numeri successivi per allocare dinamicamente la matrice con il pattern
+    insieme[i].mat = (int**) malloc(insieme[i].h * insieme[i].w * sizeof(int)); // creazione di matrice h * w di int
+    
+    //ciclo che legge h * w elementi e li inserisce nella matrice delle medesime dimensioni (del pattern) appena allocata
+
+    for(int j = 0; j < insieme[i].h; j++) {
+      for(int k = 0; k < insieme[i].w; k++) {
+        fscanf(f_r, "%d", &insieme[i].mat[j][k]);
+      }
+    }
+  
   }
   if(fclose(f_r) != 0) {
     fprintf(stderr, "close error!\n");
     exit(35);
   }
+
+  return num_pattern;
 }
