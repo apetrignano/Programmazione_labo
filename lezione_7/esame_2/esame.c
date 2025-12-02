@@ -23,7 +23,7 @@ void inizializza(int[M][N]); // si "genera" una griglia in modo randomico
 
 // funzioni seconda parte
 void inserisciPattern(int[M][N], Pattern);
-//void caricaPatterns(char **, Pattern);
+void caricaPatterns(char *, Pattern*); // primo parametro: array di char, una stringa; secondo parametro: array di Pattern, quindi una moltitudine di patterns da caricare
 
 int main() {
 
@@ -131,5 +131,27 @@ void inserisciPattern(int griglia[M][N], Pattern enter) {
     for(int j = enter.j; j < enter.w; j++) {
       griglia[i][j] = enter.mat[i - enter.i][j - enter.j];
     }
+  }
+}
+
+
+
+
+void caricaPatterns(char *input, Pattern *insieme_patterns) {
+
+  FILE *f_r = fopen(input, "r"); // apri il file passato come parametro
+  
+  if(f_r == NULL) {
+    fprintf(stderr, "Open error!\n");
+    exit(34);
+  }
+
+  while(f_r) {
+    scanf("%d %d", insieme_patterns)
+
+  }
+  if(fclose(f_r) != 0) {
+    fprintf(stderr, "close error!\n");
+    exit(35);
   }
 }
