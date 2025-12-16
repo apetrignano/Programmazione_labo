@@ -2,9 +2,9 @@ import java.lang.Math;
 
 public class Vett {
 
-  protected double x;
-  protected double y;
-  protected double norm;
+  private double x;
+  private double y;
+  private double norm;
 
   public Vett() {
     x = 0;
@@ -38,23 +38,22 @@ public class Vett {
 
   // Metodo per fare moltiplicazione scalare
 
-  public void MultScal(double n) { // public perchè usato nel main
+  public void MultScal(double n) {
 
     this.x *= n;
     this.y *= n;
 
   }
 
-  protected void init() {
+  public void init() {
     this.x = 0;
     this.y = 0;
     CalcolaNorma();
   }
 
+  /* Metodi privati */
 
-  // Metodi per accedere e settare i campi privati/protetti
-
-  protected void CalcolaNorma() { // ricalcola la norma ogni volta che serve, protected perchè devo usarla all'interno dei metodi, non nel main
+  private void CalcolaNorma() { // ricalcola la norma ogni volta che serve
 
     norm = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y ,2));
 
@@ -74,11 +73,5 @@ public class Vett {
 
   }
 
-  public void SetX(double va) {
-	  x = va;
-  }
-  public void SetY(double va) {
-	  y = va;
-  }
 
 }

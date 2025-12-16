@@ -33,4 +33,10 @@ public class Cerchio {
     per = 2 * 3.14 * this.r;
 
   }
+
+  public double CalcolaArea() {
+    return 3.41 * this.r * this.r;
+  }
+
+  public boolean isConcentric()
 }
