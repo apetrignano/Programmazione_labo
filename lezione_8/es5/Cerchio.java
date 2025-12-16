@@ -6,13 +6,15 @@ public class Cerchio {
 
   public Cerchio() {
 
-    c.init();
+    c.init(); // non va bene, risulta che c è null
+    //c.x = 0;
+    //c.y = 0;
     r = 0;
     CalcolaPer();
 
   }
 
-  public Cerchio(Vett m_c, double m_r) {
+  public Cerchio(Vett m_c, double m_r) { // creazione di Cerchio a partire da un centro già esistente e un raggio
 
     this.c = m_c;
     this.r = m_r;
@@ -38,5 +40,9 @@ public class Cerchio {
     return 3.41 * this.r * this.r;
   }
 
-  public boolean isConcentric()
+  public boolean isConcentric(Cerchio c) {
+
+    return (this.c == c.c);
+
+  }
 }

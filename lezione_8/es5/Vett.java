@@ -2,9 +2,9 @@ import java.lang.Math;
 
 public class Vett {
 
-  private double x;
-  private double y;
-  private double norm;
+  protected double x;
+  protected double y;
+  protected double norm;
 
   public Vett() {
     x = 0;
@@ -46,8 +46,8 @@ public class Vett {
   }
 
   public void init() {
-    this.x = 0;
-    this.y = 0;
+    x = 0;
+    y = 0;
     CalcolaNorma();
   }
 
